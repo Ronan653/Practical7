@@ -1,4 +1,4 @@
-  @model Ticket
+@model Ticket
     
 <h3 class="mt-4 mb-4">Delete Ticket</h3>
 
@@ -27,6 +27,22 @@
         <!-- add a form with hidden input storing the ticket id as Id and a   -->
         <!-- second hidden input field containing the student id as StudentId -->
         <!-- the form asp-action should call TicketDeleteConfirm              -->
+
+        <div class="card rounded shadow p-3">
+            <form asp-action="TicketDelete">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <input type = "hidden" asp-for = "Id">
+                <input type = "hidden" asp-for = "StudentId">
+                <!-- Display the form fields -->
+                
+                <div class="mt-3">
+                    <input type="submit" value="Delete" class="btn btn-danger" asp-action = "TicketDeleteConfirm"/>
+                    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.StudentId">Cancel</a>
+                </div>
+
+            </form>
+        </div>
     </div>
     
 </div>

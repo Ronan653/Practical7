@@ -169,6 +169,13 @@ namespace SMS.Web.Controllers
         {
             // TBC delete student via service
             
+            if (ModelState.IsValid)
+            {                
+                var ticket = svc.DeleteTicket(id);
+                return RedirectToAction(nameof(Details), new { Id = studentId } );
+            }
+
+
             // redirect to view the List of Students
             return NotFound();
         }

@@ -1,25 +1,24 @@
-<div class="card rounded shadow">
+@Model Student
+
+<div class = "card rounded shadow p-3">
     <table class="table table-sm">
         <thead>
-            <tr>           
-                <th>Ticket Issue</th>
-                <th>Created</th>  
-                <th>Active</th>       
-                <th>Actions</th>  
+            <tr>
+                <th>Issue</th>
+                <th>Created</th>
+                <th>Active</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
             @foreach(var t in Model.Tickets) {
-                <tr>              
+                <tr>
                     <td>@t.Issue</td>
-                    <td>@t.CreatedOn</td>  
+                    <td>@t.CreatedOn.ToShortDateString()</td>
                     <td>@t.Active</td>
-                    <td>
-                       <!-- TBC - add an anchor tag styled as a small danger button that navigates  -->
-                       <!-- to the TicketDelete action. Remember to pass the asp-route-id parameter -->
-                    </td>             
-                </tr>   
-            }
+                    <td><a asp-controller = "Student" asp-action = "TicketDelete" asp-route-id = "@t.Id" class="btn btn-sm btn-danger">Delete Ticket</a></td>
+                </tr>
+            }        
         </tbody>
     </table>
 </div>
